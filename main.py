@@ -19,12 +19,14 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-        screen.fill((0, 0, 0))  # Fill the screen with black
+        pawan.update(dt)
         
-        
+        screen.fill((0, 0, 0))  # Fill the screen with black     
         pawan.draw(screen)
         pygame.display.flip() 
+        
         dt=clock.tick(60)/1000
+        
         
         #print(f"dt is {dt}")
         
