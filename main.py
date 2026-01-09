@@ -2,6 +2,7 @@ from constants import SCREEN_WIDTH, SCREEN_HEIGHT
 import pygame
 from logger import log_state
 from player import Player
+from asteroidfield import AsteroidField
 
 def main():
     print("Starting Asteroids with pygame version:", pygame.__version__)
@@ -14,7 +15,8 @@ def main():
     
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
-    Player.containers = (updatable, drawable)
+    asteroids = pygame.sprite.Group()
+    Player.containers = (asteroids,updatable, drawable)
     
     pawan=Player(SCREEN_WIDTH//2, SCREEN_HEIGHT//2)
     dt=0
