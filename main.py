@@ -20,7 +20,9 @@ def main():
     
     Player.containers = (asteroids,updatable, drawable)
     Asteroid.containers = (asteroids, updatable, drawable)
-    AsteroidField.contain = (updatable)
+    AsteroidField.containers = (updatable)
+    asteroid_field = AsteroidField()
+
 
     pawan=Player(SCREEN_WIDTH//2, SCREEN_HEIGHT//2)
     dt=0
