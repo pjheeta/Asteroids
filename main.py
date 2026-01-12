@@ -1,5 +1,6 @@
 import pygame
 import sys
+import random
 from constants import *
 from logger import *
 from player import Player
@@ -16,11 +17,13 @@ def main():
     clock=pygame.time.Clock()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     
+    #creating groups
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
     shots = pygame.sprite.Group()
     
+    #creating containers
     Player.containers = (updatable, drawable)
     Asteroid.containers = (asteroids, updatable, drawable)
     AsteroidField.containers = (updatable)
@@ -28,7 +31,7 @@ def main():
 
     asteroid_field = AsteroidField()
 
-
+    #initialize player
     pawan=Player(SCREEN_WIDTH//2, SCREEN_HEIGHT//2)
 
     dt=0
@@ -57,7 +60,7 @@ def main():
             for lazers in shots:
                 if asteroid.collides_with(lazers):
                     log_event("asteroid_shot")
-                    asteroid.kill()
+                    asteroid.split()
                     lazers.kill()
                 
         for item in drawable:
